@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/course/CourseDB.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/course/CourseDeleteAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/course/CourseInfo.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/course/CourseInsertAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/course/CourseListAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/course/CourseUpdateAction.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/student/StudentDB.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/student/StudentDeleteAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/student/StudentGetOne.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/student/StudentListAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/web/css/student.css" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/web/js/datacheck.js" charset="GBK" />
-    <file url="PROJECT" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/css/menu_style.css" charset="GBK" />
   </component>
 </project>
