@@ -1,9 +1,9 @@
 
 <html>
 <HEAD>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/menu_style.css" type="text/css">
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../css/menu_style.css" type="text/css">
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 
 <TITLE>menu</TITLE>
 </HEAD>
@@ -17,14 +17,14 @@ var classCount = 3; // 菜单大类的个数
 function Show(theId) {
  	theTr = eval("tr_" + theId);
 	//document.getElementById('tr_0');
-	if (theTr.style.display == "none") {
+	if (theTr.style.display === "none") {
 		theTr.style.display = "block";
 	}
 	else {
 		theTr.style.display = "none";
 	}
 	for (i = 0; i < classCount; i++) {
-		if (i == theId)
+		if (i === theId)
 			continue;
 		theTr = eval("tr_" + i);
 		theTr.style.display = "none";

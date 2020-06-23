@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    height: 100vh;
+    background-image: url("../images/004.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: '\5B8B\4F53';/*用的unicode 防止乱码*/
+}
+
+input,
+button {
+    background: transparent;
+    border: none;
+    /*outline: none;*/
+}
+
+.wrap-mask {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+}
+
+.wrap-mask>h1 {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    padding: 140px;
+    font-size: 60px;
+    letter-spacing: 14px;
+}
+
+.loginBox {
+    width: 400px;
+    height: 364px;
+    background: rgba(0, 0, 0, 0.5);
+    /*box-shadow: 0px, 15px, 25px, 0 rgba(0, 0, 0, .6);*/
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.item {
+    height: 45px;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 20px;
+    position: relative;
+    color: #fff;
+    font-family: '\9ED1\4F53';
+}
+
+.item input {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    padding-top: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #03e9f4;
+}
+
+.item input:focus+label,
+    /*valid为合法状态下的样式*/
+
+.item input:valid+label {
+    top: 0px;
+    font-size: 12px;
+}
+
+.item label {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    transition: all 0.3s linear;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin-top: 30px;
+    color: #fff;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    font-family: '\9ED1\4F53';
+}
+
+.btn:hover {
+    border-radius: 5px;
+    color: #fff;
+    background: #03e9f4;
+    box-shadow: 0 0 5px 0 #03e9f4, 0 0 25px 0 #03e9f4, 0 0 50px 0 #03e9f4, 0 0 100px 0 #03e9f4;
+}
+
+.btn>span {
+    position: absolute;
+}
+
+.btn>span:nth-child(1) {
+    width: 100%;
+    height: 2px;
+    background: -webkit-linear-gradient(left, transparent, #03e9f4);
+    left: -100%;
+    top: 0px;
+    animation: line1 1s linear infinite;
+}
+
+@keyframes line1 {
+    50%,
+    100% {
+        left: 100%;
+    }
+}
+
+.btn>span:nth-child(2) {
+    width: 2px;
+    height: 100%;
+    background: -webkit-linear-gradient(top, transparent, #03e9f4);
+    right: 0%;
+    top: -100%;
+    animation: line2 1s 0.25s linear infinite;
+}
+
+@keyframes line2 {
+    50%,
+    100% {
+        top: 100%;
+    }
+}
+
+.btn>span:nth-child(3) {
+    width: 100%;
+    height: 2px;
+    background: -webkit-linear-gradient(left, #03e9f4, transparent);
+    left: 100%;
+    bottom: 0px;
+    animation: line3 1s 0.5s linear infinite;
+}
+
+@keyframes line3 {
+    50%,
+    100% {
+        left: -100%;
+    }
+}
+
+.btn>span:nth-child(4) {
+    width: 2px;
+    height: 100%;
+    background: -webkit-linear-gradient(top, #03e9f4, transparent);
+    left: 0%;
+    top: 100%;
+    animation: line4 1s 0.75s linear infinite;
+}
+
+@keyframes line4 {
+    50%,
+    100% {
+        top: -100%;
+    }
+}
+
+#UMsg,
+#PMsg {
+    height: 20px;
+    font-size: 14px;
+    color: red;
+    font-family: '\9ED1\4F53';
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    margin-top: 30px;
+}
