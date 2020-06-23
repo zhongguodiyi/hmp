@@ -1,6 +1,6 @@
 package login;
 
-import commom.DBConnection;
+import commom.*;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -28,6 +28,7 @@ public class UserDB implements Serializable {
 				user.setUserID(rs.getInt("N_USER_ID"));
 				user.setUserName(rs.getString("VC_LOGIN_NAME"));
 				user.setUserPwd(rs.getString("VC_PASSWORD"));
+				user.setAuth(rs.getInt("Authority"));
 			}
 			rs.close();
 			pStmt.close();
@@ -41,6 +42,37 @@ public class UserDB implements Serializable {
 		return user;
 	}
 
+	public UserInfo GetUserbyId(int userId) {
+		System.out.println("GetUserbyName:userName="+userId);
+		UserInfo user=null;
+		PreparedStatement pStmt=null;
+		ResultSet rs = null;
+		try {
+			//链接数据库
+			con = DBConnection.getConnection();
+			//查找指定用户
+			pStmt = con.prepareStatement("SELECT * FROM t_user where N_USER_ID=?");
+			pStmt.setInt(1, userId);
+			rs = pStmt.executeQuery();
+			//对信息进行封装
+			if(rs.next()) {
+				user=new UserInfo();
+				user.setUserID(rs.getInt("N_USER_ID"));
+				user.setUserName(rs.getString("VC_LOGIN_NAME"));
+				user.setUserPwd(rs.getString("VC_PASSWORD"));
+				user.setAuth(rs.getInt("Authority"));
+			}
+			rs.close();
+			pStmt.close();
+		}catch(Exception e) {
+			System.out.println("获取指定用户信息失败！ Error to fetching the infomation of user!");
+			e.printStackTrace();
+
+		}finally {
+			DBConnection.closeConnection();
+		}
+		return user;
+	}
 
 	public ArrayList<UserInfo> GetUserInfo() {
 		ArrayList<UserInfo> user_list = new ArrayList<>();
@@ -59,6 +91,7 @@ public class UserDB implements Serializable {
 				user.setUserID(rs.getInt("N_USER_ID"));
 				user.setUserName(rs.getString("VC_LOGIN_NAME"));
 				user.setUserPwd(rs.getString("VC_PASSWORD"));
+				user.setAuth(rs.getInt("Authority"));
 				user_list.add(user);
 			}
 			rs.close();

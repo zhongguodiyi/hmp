@@ -1,4 +1,4 @@
-<%--
+  <%@ page import="login.*" %><%--
   Created by IntelliJ IDEA.
   User: 25865
   Date: 2020/6/6
@@ -12,9 +12,9 @@
     <META http-equiv="Content-Style-Type" content="text/css">
     <title>信息管理系统</title>
   </head>
-  <frameset cols="150,*" frameborder="No"   framespacing="0">
-    <frame src="left_menu.html" name="left_navi" noresize scrolling="no">
-    <frame src="welcome.html" name="right_workspace" noresize >
+  <frameset cols="200,*" frameborder="No"   framespacing="0">
+    <frame src="left_menu.jsp" name="left_navi" noresize scrolling="no">
+    <frame src="welcome.jsp" name="right_workspace" noresize >
   </frameset>
 
 </html>

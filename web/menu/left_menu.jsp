@@ -1,4 +1,4 @@
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <HEAD>
     <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,7 +7,7 @@
 
 <TITLE>menu</TITLE>
 </HEAD>
-<BODY link="#333333" vlink="#333333" alink="#FF0000" bgColor="#1fa5a2">
+<BODY bgColor="#1fa5a2">
 <div id="menuDiv" ></div>	 
 </BODY>
 </html>
@@ -44,7 +44,6 @@ menuList=[
 		{"name":"课程成绩查询","link":"waiting.html"},
 		{"name":"成绩录入","link":"waiting.html"}]}
 ];
-
 function createMenu(){	
 	var strHtml="";
 	strHtml+="<table class=\"guide guideText\" width=\"100%\">	";	 
@@ -63,6 +62,15 @@ function createMenu(){
 	 document.getElementById("menuDiv").innerHTML =strHtml;
 }
 createMenu();
-
 </script>
+<style>
+    body{
+        width:160px;
+
+    }
+	table{
+		font-family: "\5B8B\4F53";
+		font-size: 16px;
+	}
+</style>
 
