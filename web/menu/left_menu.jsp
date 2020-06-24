@@ -1,5 +1,5 @@
-	<%@ page import="login.UserInfo" %>
-		<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="user.UserInfo" %>
+    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <HEAD>
     <META http-equiv="Content-Type" content="text/html; charset=UTF-8">

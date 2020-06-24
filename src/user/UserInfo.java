@@ -1,4 +1,4 @@
-package login;
+package user;
 
 public class UserInfo {
     private int userID;

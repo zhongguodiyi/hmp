@@ -1,14 +1,13 @@
 package login;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import user.*;
 @WebServlet("/MenuInitServlet")
 public class MenuInitServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,16 +31,16 @@ public class MenuInitServlet extends HttpServlet {
                 "\t\t{\"name\":\"成绩录入\",\"link\":\"waiting.html\"}]}\n" +
                 "]";
 
-        String P_menuList = "{\"main\":\"用户信息管理\",\"sub\":[{\"name\":\"个人信息管理\",\"link\":\"\"}]},";
+        String P_menuList = "{\"main\":\"用户信息管理\",\"sub\":[{\"name\":\"个人信息管理\",\"link\":\"../user/userInfo_edit.jsp?status=1\"}]},";
 
         String A_menuList = "{\"main\":\"用户信息管理\",\"sub\":[\n" +
-                "\t\t{\"name\":\"个人信息管理\",\"link\":\"waiting.html\"},\n" +
-                "\t\t{\"name\":\"普通用户信息管理\",\"link\":\"waiting.html\"}]},";
+                "\t\t{\"name\":\"个人信息管理\",\"link\":\"../user/userInfo_edit.jsp?status=1\"},\n" +
+                "\t\t{\"name\":\"普通用户信息管理\",\"link\":\"../UserListServlet?type=1\"}]},";
 
         String S_menuList = "{\"main\":\"用户信息管理\",\"sub\":[\n" +
-                "\t\t{\"name\":\"个人信息管理\",\"link\":\"waiting.html\"},\n" +
-                "\t\t{\"name\":\"普通用户信息管理\",\"link\":\"waiting.html\"},\n" +
-                "\t\t{\"name\":\"管理员变更\",\"link\":\"waiting.html\"}]},";
+                "\t\t{\"name\":\"个人信息管理\",\"link\":\"../user/userInfo_edit.jsp?status=1\"},\n" +
+                "\t\t{\"name\":\"用户信息管理\",\"link\":\"../UserListServlet?type=0\"},\n" +
+                "\t\t{\"name\":\"管理员设置\",\"link\":\"waiting.html\"}]},";
 
         if(type == 2){
             menuList = "[ \n" + P_menuList + menuList;

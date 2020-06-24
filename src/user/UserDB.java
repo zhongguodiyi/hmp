@@ -1,4 +1,4 @@
-package login;
+package user;
 
 import commom.*;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class UserDB implements Serializable {
 	private Connection con = null;
 	public UserInfo GetUserbyName(String userName) {
-		System.out.println("GetUserbyName:userName="+userName);
+		//System.out.println("GetUserbyName:userName="+userName);
 		UserInfo user=null;
 		PreparedStatement pStmt=null;
 		ResultSet rs = null;
@@ -43,7 +43,6 @@ public class UserDB implements Serializable {
 	}
 
 	public UserInfo GetUserbyId(int userId) {
-		System.out.println("GetUserbyName:userName="+userId);
 		UserInfo user=null;
 		PreparedStatement pStmt=null;
 		ResultSet rs = null;
@@ -73,8 +72,28 @@ public class UserDB implements Serializable {
 		}
 		return user;
 	}
+	public int update(UserInfo user){
+		PreparedStatement pStmt=null;
+		int count=0;
+		try {
+			con=DBConnection.getConnection();
+			pStmt = con.prepareStatement("UPDATE t_user SET VC_LOGIN_NAME=?,VC_PASSWORD=? WHERE N_USER_ID=?");
+			//TODO 预编译SQL语句参数的设置
+			pStmt.setString(1,user.getUserName());
+			pStmt.setString(2,user.getUserPwd());
+			pStmt.setInt(3,user.getUserID());
 
-	public ArrayList<UserInfo> GetUserInfo() {
+			count=pStmt.executeUpdate();
+			pStmt.close();
+		} catch (Exception e) {
+			System.out.println("修改课程失败！");
+			e.printStackTrace();
+		} finally{
+			DBConnection.closeConnection();
+		}
+		return count;
+	}
+	public ArrayList<UserInfo> GetUserInfo(int type) {
 		ArrayList<UserInfo> user_list = new ArrayList<>();
 		UserInfo user=null;
 		PreparedStatement pStmt=null;
@@ -82,7 +101,12 @@ public class UserDB implements Serializable {
 		try {
 			//链接数据库
 			con = DBConnection.getConnection();
-			pStmt = con.prepareStatement("SELECT * FROM t_user WHERE VC_LOGIN_NAME like '%user%'");
+			if(type == 1){
+				pStmt = con.prepareStatement("SELECT * FROM t_user WHERE Authority = 2");
+			}else if(type == 0){
+				pStmt = con.prepareStatement("SELECT * FROM t_user WHERE Authority != 0");
+			}
+
 			//pStmt.setString(1, userName);
 			rs = pStmt.executeQuery();
 			//遍历封装

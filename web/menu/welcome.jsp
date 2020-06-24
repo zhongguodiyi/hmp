@@ -1,5 +1,4 @@
-    <%@ page import="login.UserDB" %>
-        <%@ page import="login.UserInfo" %><%--
+<%@ page import="user.UserInfo" %><%--
   Created by IntelliJ IDEA.
   User: 19843
   Date: 2020/6/23
