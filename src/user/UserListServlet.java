@@ -1,5 +1,7 @@
 package user;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +18,11 @@ public class UserListServlet extends HttpServlet {
         UserDB userBean = new UserDB();
         ArrayList<UserInfo> list = new ArrayList<>();
         list = userBean.GetUserInfo(type);
-        request.getSession().setAttribute("UserList",list);
-        response.sendRedirect(request.getContextPath()+"/user/user_list.jsp");
+        ObjectMapper obj = new ObjectMapper();
+        String str = obj.writeValueAsString(list);
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write(str);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

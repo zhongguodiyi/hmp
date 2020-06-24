@@ -9,53 +9,51 @@
     <title>用户信息表</title>
 </head>
 <body>
-<table border ="0" class = "tb_showall" style="width:100%;border-collapse: collapse;">
+<table border ="0" class = "tb_showall" style="width:100%;border-collapse: collapse;" >
     <tr>
         <th colspan="7" style="text-align: center;">用户信息列表</th>
     </tr>
-    <tr border = "0" class = "td1">
+    <tr border = "0" class = "td1" id="user_list">
         <td>用户ID</td>
         <td>用户名</td>
         <td>用户密码</td>
         <td>用户权限</td>
         <td></td>
+        <td></td>
     </tr>
-
-    <%
-
-        ArrayList<UserInfo> UserList = (ArrayList<UserInfo>) session.getAttribute("UserList");
-        int flag = 1;
-        for(UserInfo user : UserList){
-            String td_n;
-            //对序号做判断分析该用的css样式
-            if(flag % 2==0){
-                td_n = "td_2";
-            }else {
-                td_n = "td_1";
-            }
-            String type =null;
-            int n = user.getAuth();
-            if(n == 1){
-                type = "管理员";
-            }else {
-                type = "普通用户";
-            }
-    %>
-    <tr class=<%=td_n%>>
-        <td><%=user.getUserID()%></td>
-        <td><%=user.getUserName()%></td>
-        <td><%=user.getUserPwd()%></td>user
-        <td><%=type%></td>
-        <td style="text-align: right;"><a  href="#">编辑</a> <a  href="#">删除</a></td>
-    </tr>
-    <%
-            flag ++;
-        }
-    %>
     <tr style="background-color: white;">
         <td colspan="3" style="text-align: left;"><a href="#">添加</a></td>
-        <td colspan="3" style="text-align: center;"><a href="#">刷新数据列表</a></td>
+        <td colspan="3" style="text-align: center;"><a href="user_list.jsp?type=<%=request.getParameter("type")%>">刷新数据列表</a></td>
     </tr>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script>
+        $("body").onload=fillData();
+
+        function fillData() {
+            $.ajax({
+                type : "POST",
+                url:"<%=request.getContextPath()%>/UserListServlet",
+                data:"type="+"<%=request.getParameter("type")%>",
+                success:function (data) {
+                    for (let i = 0; i < data.length; i++){
+                        let tdi = i%2===0?"1":"2";
+                        let type = data[i].Auth === 1 ?"管理员":"普通用户"
+
+                        $("#user_list").after("<tr class=\" td_" + tdi + "\">" +
+                            "<td>"+ data[i].userID+"</td>" +
+                            "<td>"+ data[i].userName +"</td>" +
+                            "<td>"+ data[i].userPwd +"</td>" +
+                            "<td>"+ type +"</td>" +
+                            "<td><a href="+"<%=request.getContextPath()%>"+"\"/user/userInfo_edit.jsp?id="+ data[i].userID+"&status=2\">编辑</a></td>" +
+                            "<td><a href=\"#\""+">删除</a></td></tr>")
+                    }
+                },
+                error:function () {
+                    alert("请求失败")
+                }
+            })
+        }
+    </script>
 </table>
 
 </body>
