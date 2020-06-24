@@ -16,7 +16,7 @@ public class DBConnection {
                 System.out.println("加载MYSQL数据库驱动失败！");
             }
             try { //通过驱动程序管理器获取数据库连接
-                con= DriverManager.getConnection("jdbc:mysql://localhost:3306/db_student?serverTimezone=UTC","root","root");
+                con= DriverManager.getConnection("jdbc:mysql://localhost:3306/db_student?serverTimezone=UTC&characterEncoding=UTF-8","root","root");
             }catch(Exception e){
                 e.printStackTrace();
                 System.out.println("获取数据库连接失败！");

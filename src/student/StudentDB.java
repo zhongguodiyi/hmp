@@ -1,6 +1,6 @@
 package student;
 
-import commom.DBConnection;
+import common.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

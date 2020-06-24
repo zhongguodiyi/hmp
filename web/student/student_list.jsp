@@ -16,7 +16,7 @@
 </head>
 <body>
 <table border="0" cellspacing="0" cellpadding="0" width="100%" style="text-align: center">
-    <caption class="tb_showall">学生信息列表</caption>
+    <caption class="tb_showall">课程信息列表</caption>
     <tr class="td_header">
         <th>学号</th>
         <th>姓名</th>
