@@ -24,12 +24,12 @@ public class MenuInitServlet extends HttpServlet {
                 "\t{\"main\":\"学生管理\",\"sub\":[\n" +
                 "\t\t{\"name\":\"专业信息管理\",\"link\":\"waiting.html\"},\n" +
                 "\t\t{\"name\":\"院系信息管理\",\"link\":\"waiting.html\"},\n" +
-                "\t\t{\"name\":\"学生信息管理\",\"link\":\"StudentListAction\"}]},\n" +
+                "\t\t{\"name\":\"学生信息管理\",\"link\":\"../StudentListAction\"}]},\n" +
                 "\t{\"main\":\"课程管理\",\"sub\":[{\"name\":\"课程信息管理\",\"link\":\"CourseListAction\"}]},\n" +
                 "\t{\"main\":\"成绩管理\",\"sub\":[\n" +
-                "\t\t{\"name\":\"学生成绩查询\",\"link\":\"grade/searchStuGrade.jsp\"},\n" +
-                "\t\t{\"name\":\"课程成绩查询\",\"link\":\"grade/searchSubGrade.jsp\"},\n" +
-                "\t\t{\"name\":\"成绩列表\",\"link\":\"searchAllServlet\"}]}\n" +
+                "\t\t{\"name\":\"学生成绩查询\",\"link\":\"../grade/searchStuGrade.jsp\"},\n" +
+                "\t\t{\"name\":\"课程成绩查询\",\"link\":\"../grade/searchSubGrade.jsp\"},\n" +
+                "\t\t{\"name\":\"成绩列表\",\"link\":\"../searchAllServlet\"}]}\n" +
                 "]";
 
         String P_menuList = "{\"main\":\"用户信息管理\",\"sub\":[{\"name\":\"个人信息管理\",\"link\":\"\"}]},";

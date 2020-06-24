@@ -14,7 +14,7 @@
     <script language="JavaScript">
         function check() {
             var score=$("#score").val();
-            if(isNaN(score) || score>100 ||score<0){
+            if(isNaN(score) || score>100 || score <0){
                 alert("分数请输入0-100内的数字");
                 return false;
             }
@@ -44,7 +44,7 @@
             <td>科目:<input type="text" value=<%=subjects[st.getSubject()]%> readonly="readonly" name="subject"/></td>
         </tr>
         <tr class="">
-            <td>分数:<input type="text" name="score" value=<%=st.getScore()%> /></td>
+            <td>分数:<input type="text" name="score" value=<%=st.getScore()%> id="score"/></td>
         </tr>
         <tr class="">
             <td><input type="submit" value="修改"/></td>
