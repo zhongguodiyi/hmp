@@ -31,5 +31,6 @@
     <orderEntry type="library" name="javax.servlet.jsp" level="project" />
     <orderEntry type="library" name="javax.servlet.jsp.jstl" level="project" />
     <orderEntry type="library" name="javax.transaction" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>
