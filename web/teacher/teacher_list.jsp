@@ -21,7 +21,7 @@
             function fillData() {
                 $.ajax({
                     type : "POST",
-                    url:"/test5/TeacherList",
+                    url:"<%=request.getContextPath()%>/TeacherList",
                     success:function (data) {
                         for (let i = 0; i < data.length; i++){
                             let tdi = i%2==0?"1":"2";
@@ -31,8 +31,8 @@
                                 "<td>"+ data[i].sex +"</td>" +
                                 "<td>"+ data[i].age +"</td>" +
                                 "<td>"+ data[i].title +"</td>" +
-                                "<td><a href=\"/test5/teacher/teacher_edit.jsp?id="+ data[i].id+"\">编辑</a></td>" +
-                                "<td><a href=\"/test5/TeacherDelete?id="+ data[i].id +"\">删除</a></td></tr>")
+                                "<td><a href="+"<%=request.getContextPath()%>"+"\"/teacher/teacher_edit.jsp?id="+ data[i].id+"\">编辑</a></td>" +
+                                "<td><a href="+"<%=request.getContextPath()%>"+"\"/TeacherDelete?id="+ data[i].id +"\">删除</a></td></tr>")
                         }
                     }
                 })

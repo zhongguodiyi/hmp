@@ -1,6 +1,6 @@
 package student;
 
-import common.MyTools;
+import commom.MyTools;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

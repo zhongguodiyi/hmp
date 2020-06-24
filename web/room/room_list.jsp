@@ -22,15 +22,15 @@
         function fillData() {
             $.ajax({
                 type : "POST",
-                url:"/test5/RoomList",
+                url:"<%=request.getContextPath()%>/RoomList",
                 success:function (data) {
                     for (let i = 0; i < data.length; i++){
                         let tdi = i%2==0?"1":"2";
                         $("#list").after("<tr class=\" td_" + tdi + "\">" +
                             "<td>"+ data[i].code +"</td>" +
                             "<td>"+ data[i].location +"</td>" +
-                            "<td><a href=\"/test5/room/room_edit.jsp?id="+ data[i].id+"\">编辑</a></td>" +
-                            "<td><a href=\"/test5/RoomDelete?id="+ data[i].id +"\">删除</a></td></tr>")
+                            "<td><a href="+"<%=request.getContextPath()%>"+"\"/room/room_edit.jsp?id="+ data[i].id+"\">编辑</a></td>" +
+                            "<td><a href="+"<%=request.getContextPath()%>"+"\"/RoomDelete?id="+ data[i].id +"\">删除</a></td></tr>")
                     }
                 }
             })

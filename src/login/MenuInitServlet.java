@@ -24,7 +24,9 @@ public class MenuInitServlet extends HttpServlet {
                 "\t\t{\"name\":\"专业信息管理\",\"link\":\"waiting.html\"},\n" +
                 "\t\t{\"name\":\"院系信息管理\",\"link\":\"waiting.html\"},\n" +
                 "\t\t{\"name\":\"学生信息管理\",\"link\":\"../StudentListAction\"}]},\n" +
-                "\t{\"main\":\"课程管理\",\"sub\":[{\"name\":\"课程信息管理\",\"link\":\"CourseListAction\"}]},\n" +
+                        "{\"main\":\"教师管理\",\"sub\":[{\"name\":\"教师信息管理\",\"link\":\"../teacher/teacher_list.jsp\"}]},\n" +
+                        "{\"main\":\"教室管理\",\"sub\":[{\"name\":\"教室信息管理\",\"link\":\"../room/room_list.jsp\"}]},"+
+                "\t{\"main\":\"课程管理\",\"sub\":[{\"name\":\"课程信息管理\",\"link\":\"../CourseListAction\"}]},\n" +
                 "\t{\"main\":\"成绩管理\",\"sub\":[\n" +
                 "\t\t{\"name\":\"学生成绩查询\",\"link\":\"../grade/searchStuGrade.jsp\"},\n" +
                 "\t\t{\"name\":\"课程成绩查询\",\"link\":\"../grade/searchSubGrade.jsp\"},\n" +
