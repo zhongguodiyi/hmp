@@ -32,9 +32,7 @@
 
     <body>
             <%
-        int id = (Integer) session.getAttribute("id");
-        UserDB userBean = new UserDB();
-        UserInfo user = userBean.GetUserbyId(id);
+        UserInfo user = (UserInfo)session.getAttribute("user");
         String type = null;
         if(user.getAuth()==0){
             type = "超级管理员";

@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             result="2";
             result= obj.writeValueAsString(result);
         }else{
-            request.getSession().setAttribute("id",user.getUserID());
+            request.getSession().setAttribute("user",user);
             result=obj.writeValueAsString(user);
         }
 
