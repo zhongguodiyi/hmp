@@ -23,6 +23,10 @@
             course = i;
         }
     }
+    String detail = course.getDetail();
+    if(detail == null){
+        detail="";
+    }
 
 %>
 
@@ -47,10 +51,10 @@
                 </select>
             </td>
         </tr>
-        <script type="text/javascript">
-            var sel = document.getElementById("type");//得到selsect
-            var opt = sel.getElementsByTagName("option");//得到option数组
-            opt[<%=course.getType() - 1%>].selected=true;
+        <script src="../js/jquery-3.4.1.min.js"></script>
+        <script>
+            let type = <%=course.getType()%>
+            $("#type").val(type)
         </script>
         <tr>
             <td style="width: 20%;">学分</td>
@@ -66,17 +70,12 @@
                 <input type="radio" name="major" id="major" value="1">软件工程<input type="radio" name="major" value="2">空间信息<span class="star">*</span>
             </td>
         </tr>
-        <script type="text/javascript">
-            var rid = document.getElementsByName("major");//获取radio数组
-            for(var i=0;i < rid.length;i++) {
-                if (rid[i].value === <%=course.getMajor()%>) {
-                    rid[i].checked = "checked";
-                }
-            }
+        <script>
+                $("input[name='major'][value='<%=course.getMajor()%>']").prop("checked","checked")
         </script>
         <tr>
             <td style="width: 20%;">备注</td>
-            <td><textarea cols="25" rows="3" name="detail"><%=course.getDetail()%></textarea>200个字符以内</td>
+            <td><textarea cols="25" rows="3" name="detail"><%=detail%></textarea>200个字符以内</td>
         </tr>
         <tr>
             <td style="width: 20%;text-align: center;" colspan="2"><button type="button" onclick="check();">提交</button><button type="button" onclick="javascript:window.location.href='<%=request.getContextPath()%>/CourseListAction'">取消</button></td>

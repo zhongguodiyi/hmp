@@ -13,6 +13,7 @@ import java.io.IOException;
 public class CourseUpdateAction extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //1、获取客户端提交数据
+        request.setCharacterEncoding("UTF-8");
         CourseInfo course=new CourseInfo();
         //TODO 1 获取新课程的其他信息并保存到course中
         course.setCourseID(MyTools.strToint(request.getParameter("courseid")));
@@ -27,6 +28,7 @@ public class CourseUpdateAction extends HttpServlet {
         beanDB.update(course);
         //3、向客户端做出响应
         //TODO 3 重定向到查询显示课程信息列表的servlet
+        response.setCharacterEncoding("UTF-8");
         response.sendRedirect(request.getContextPath()+"/CourseListAction");
 
     }
