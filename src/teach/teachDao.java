@@ -1,6 +1,7 @@
-package grade;
+package teach;
 
 import commom.DBConnection;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,25 +9,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class gradeDao {
+public class teachDao {
     private Connection con =null;
-    public ArrayList<StudentGrade> searchStuGrade(int sno){
-        ArrayList<StudentGrade> grades=new ArrayList<StudentGrade>();
+    public ArrayList<teachInfo> searchTeacher(int id){
+        ArrayList<teachInfo> ar=new ArrayList<teachInfo>();
         PreparedStatement pStmt=null;
         ResultSet rs=null;
         try{
             con= DBConnection.getConnection();
-            pStmt=con.prepareStatement("select * from stu_grade where id=?");
-            pStmt.setInt(1,sno);
+            pStmt=con.prepareStatement("select * from t_teaching where id=?");
+            pStmt.setInt(1,id);
             rs=pStmt.executeQuery();
             while(rs.next()){
-                StudentGrade stu=new StudentGrade();
-                stu.setId(rs.getInt("id"));
-                stu.setName(rs.getString("name"));
-                stu.setSex(rs.getInt("sex"));
-                stu.setSubject(rs.getInt("subject"));
-                stu.setScore(rs.getFloat("score"));
-                grades.add(stu);
+                teachInfo teach=new teachInfo();
+                teach.setId(rs.getInt("id"));
+                teach.settName(rs.getString("tName"));
+                teach.setSubject(rs.getInt("subject"));
+                ar.add(teach);
             }
 
         }catch(Exception e){
@@ -40,25 +39,23 @@ public class gradeDao {
                 a.printStackTrace();
             }
         }
-        return grades;
+        return ar;
 
     }
-    public ArrayList<StudentGrade> searchAll(){
-        ArrayList<StudentGrade> grades=new ArrayList<StudentGrade>();
+    public ArrayList<teachInfo> searchAll(){
+        ArrayList<teachInfo> ar=new ArrayList<teachInfo>();
         PreparedStatement pStmt=null;
         ResultSet rs=null;
         try{
             con= DBConnection.getConnection();
-            pStmt=con.prepareStatement("select * from stu_grade");
+            pStmt=con.prepareStatement("select * from t_teaching");
             rs=pStmt.executeQuery();
             while(rs.next()){
-                StudentGrade stu=new StudentGrade();
-                stu.setId(rs.getInt("id"));
-                stu.setName(rs.getString("name"));
-                stu.setSex(rs.getInt("sex"));
-                stu.setSubject(rs.getInt("subject"));
-                stu.setScore(rs.getFloat("score"));
-                grades.add(stu);
+                teachInfo teach=new teachInfo();
+                teach.setId(rs.getInt("id"));
+                teach.settName(rs.getString("tName"));
+                teach.setSubject(rs.getInt("subject"));
+                ar.add(teach);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -71,26 +68,24 @@ public class gradeDao {
                 a.printStackTrace();
             }
         }
-        return grades;
+        return ar;
 
     }
-    public ArrayList<StudentGrade> searchSubGrade(int subname){
-        ArrayList<StudentGrade> grades=new ArrayList<StudentGrade>();
+    public ArrayList<teachInfo> searchSub(int subname){
+        ArrayList<teachInfo> ar=new ArrayList<teachInfo>();
         PreparedStatement pStmt=null;
         ResultSet rs=null;
         try{
             con= DBConnection.getConnection();
-            pStmt=con.prepareStatement("select * from stu_grade where subject=?");
+            pStmt=con.prepareStatement("select * from t_teaching where subject=?");
             pStmt.setInt(1,subname);
             rs=pStmt.executeQuery();
             while(rs.next()){
-                StudentGrade stu=new StudentGrade();
-                stu.setId(rs.getInt("id"));
-                stu.setName(rs.getString("name"));
-                stu.setSex(rs.getInt("sex"));
-                stu.setSubject(rs.getInt("subject"));
-                stu.setScore(rs.getFloat("score"));
-                grades.add(stu);
+                teachInfo teach=new teachInfo();
+                teach.setId(rs.getInt("id"));
+                teach.settName(rs.getString("tName"));
+                teach.setSubject(rs.getInt("subject"));
+                ar.add(teach);
             }
 
         }catch(Exception e){
@@ -104,18 +99,16 @@ public class gradeDao {
                 a.printStackTrace();
             }
         }
-        return grades;
+        return ar;
     }
-    public boolean insertStuGrade(StudentGrade stu){
+    public boolean insertTeaching(teachInfo teach){
         PreparedStatement pStmt=null;
         try{
             con= DBConnection.getConnection();
-            pStmt=con.prepareStatement("insert into stu_grade values(?,?,?,?,?)");
-            pStmt.setInt(1,stu.getId());
-            pStmt.setString(2,stu.getName());
-            pStmt.setInt(3,stu.getSex());
-            pStmt.setInt(4,stu.getSubject());
-            pStmt.setFloat(5,stu.getScore());
+            pStmt=con.prepareStatement("insert into t_teaching values(?,?,?)");
+            pStmt.setInt(1,teach.getId());
+            pStmt.setString(2,teach.gettName());
+            pStmt.setInt(3,teach.getSubject());
             int count=pStmt.executeUpdate();
             if(count>0){
                 return true;
@@ -133,11 +126,11 @@ public class gradeDao {
             }
         }
     }
-    public boolean deleteStuGrade(int id,int sub){
+    public boolean deleteTeaching(int id,int sub){
         PreparedStatement pStmt=null;
         try{
             con= DBConnection.getConnection();
-            pStmt=con.prepareStatement("delete from stu_grade where id=? and subject=?");
+            pStmt=con.prepareStatement("delete from t_teaching where id=? and subject=?");
             pStmt.setInt(1,id);
             pStmt.setInt(2,sub);
             int count=pStmt.executeUpdate();
@@ -157,18 +150,14 @@ public class gradeDao {
             }
         }
     }
-    public boolean updateStuGrade(StudentGrade stu){
+    public boolean updateTeaching(teachInfo teach,int sub){
         PreparedStatement pStmt=null;
         try{
             con= DBConnection.getConnection();
-            pStmt=con.prepareStatement("update stu_grade set id=?,name=?,sex=?,subject=?, score=? where id=? and subject=?");
-            pStmt.setInt(1,stu.getId());
-            pStmt.setString(2,stu.getName());
-            pStmt.setInt(3,stu.getSex());
-            pStmt.setInt(4,stu.getSubject());
-            pStmt.setFloat(5,stu.getScore());
-            pStmt.setInt(6,stu.getId());
-            pStmt.setInt(7,stu.getSubject());
+            pStmt=con.prepareStatement("update t_teaching set subject=? where id=? and subject=?");
+            pStmt.setInt(1,teach.getSubject());
+            pStmt.setInt(2,teach.getId());
+            pStmt.setInt(3,sub);
             int count=pStmt.executeUpdate();
             if(count>0){
                 return true;

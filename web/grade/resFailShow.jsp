@@ -40,7 +40,7 @@ else if(flag==3){
 %>
 <script type="text/javascript">
     alert("操作失败");
-    window.location.href="<%=path%>/searchAllServlet";
+    window.location.href="<%=path%>/teach/teach_add.jsp";
 </script>
 <%
 }
@@ -49,19 +49,11 @@ else if(flag==4){
 %>
 <script type="text/javascript">
     alert("操作失败");
-    window.location.href="<%=path%>/grade/searchStuGrade.jsp";
-</script>
-<%
-}
-else if(flag==5){
-    session.removeAttribute("flag");
-%>
-<script type="text/javascript">
-    alert("操作失败");
-    window.location.href="<%=path%>/grade/searchSubGrade.jsp";
+    window.location.href="<%=path%>/searchAlltServlet";
 </script>
 <%
     }
+
 %>
 </body>
 </html>

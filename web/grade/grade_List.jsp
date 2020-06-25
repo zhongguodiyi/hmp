@@ -16,10 +16,10 @@
 </head>
 
 <script type="text/javascript">
-    function del() {
-        var sid=$("#gid").text();
-        var ssub=$("#gsub").text();
+    function del(obj) {
         var path1="${pageContext.request.contextPath}/deleteServlet";
+        var sid=$(obj).parent().prevAll(".gid").text();
+        var ssub=$(obj).parent().prevAll(".gsub").text();
         $.ajax({
             url:path1,
             type:"post",
@@ -28,6 +28,7 @@
             success:function (result,testStatus) {
                 if(result){
                     alert("删除成功");
+                    $(obj).parents("tr").remove();
                 }else{
                     alert("删除失败");
                 }
@@ -61,13 +62,13 @@
     <%
         for (int i = 0; i < gradeList.size();i++) {
             out.print("<tr class= \" td_" + (i%2==0?1:2) + "\" >");
-            out.print("<td id=\"gid\">" + gradeList.get(i).getId() +"</td>");
-            out.print("<td id=\"game\">"+ (gradeList.get(i).getName()) +"</td>");
-            out.print("<td id=\"gsex\">"+ (gradeList.get(i).getSex() == 0?"男":"女") +"</td>");
-            out.print("<td id=\"gsub\">"+ subjects[gradeList.get(i).getSubject()] +"</td>");
-            out.print("<td id=\"gscore\">"+ (gradeList.get(i).getScore()) +"</td>");
+            out.print("<td class=\"gid\">" + gradeList.get(i).getId() +"</td>");
+            out.print("<td class=\"game\">"+ (gradeList.get(i).getName()) +"</td>");
+            out.print("<td class=\"gsex\">"+ (gradeList.get(i).getSex() == 0?"男":"女") +"</td>");
+            out.print("<td class=\"gsub\">"+ subjects[gradeList.get(i).getSubject()] +"</td>");
+            out.print("<td class=\"gscore\">"+ (gradeList.get(i).getScore()) +"</td>");
             out.print("<td><a href=" + request.getContextPath() +"/grade/grade_edit.jsp?id="+ i+">编辑</a></td>");
-            out.print("<td><input type=\"button\" value=\"删除\" onclick=\"del()\"/></td>");
+            out.print("<td><input type=\"button\" value=\"删除\" onclick=\"del(this)\"/></td>");
             out.print("</tr>");
         }
     %>

@@ -26,13 +26,31 @@
     </script>
 <%
     }
-    else if(flag==2 || flag==3){
+    else if(flag==2){
         session.removeAttribute("flag");
 %>
     <script type="text/javascript">
         alert("操作成功");
         window.location.href="<%=path%>/searchAllServlet";
     </script>
+<%
+    }
+    else if(flag==3){
+        session.removeAttribute("flag");
+%>
+<script type="text/javascript">
+    alert("操作成功");
+    window.location.href="<%=path%>/teach/teach_add.jsp";
+</script>
+<%
+    }
+    else if(flag==4){
+        session.removeAttribute("flag");
+%>
+<script type="text/javascript">
+    alert("操作成功");
+    window.location.href="<%=path%>/searchAlltServlet";
+</script>
 <%
     }
 

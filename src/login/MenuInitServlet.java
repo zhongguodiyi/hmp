@@ -34,7 +34,11 @@ public class MenuInitServlet extends HttpServlet {
                 "\t{\"main\":\"成绩管理\",\"sub\":[\n" +
                 "\t\t{\"name\":\"学生成绩查询\",\"link\":\"../grade/searchStuGrade.jsp\"},\n" +
                 "\t\t{\"name\":\"课程成绩查询\",\"link\":\"../grade/searchSubGrade.jsp\"},\n" +
-                "\t\t{\"name\":\"成绩列表\",\"link\":\"../searchAllServlet\"}]}\n" +
+                "\t\t{\"name\":\"成绩列表\",\"link\":\"../searchAllServlet\"}]},\n" +
+                "\t{\"main\":\"授课信息管理\",\"sub\":[\n" +
+                "\t\t{\"name\":\"授课教师查询\",\"link\":\"../teach/searchTeach.jsp\"},\n" +
+                "\t\t{\"name\":\"教师授课查询\",\"link\":\"../teach/searchSub.jsp\"},\n" +
+                "\t\t{\"name\":\"授课信息列表\",\"link\":\"../searchAlltServlet\"}]}\n" +
                 "]";
 
         String P_menuList = "{\"main\":\"用户信息管理\",\"sub\":[{\"name\":\"个人信息管理\",\"link\":\"../user/userInfo_edit.jsp?status=1\"}]},";

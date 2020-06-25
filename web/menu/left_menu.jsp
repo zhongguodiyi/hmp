@@ -50,6 +50,7 @@ $.ajax({
 		data:"id="+id,
 		success:function(data) {
 			var menuList=eval(data);
+            console.log(data);
 			console.log(menuList);
 			createMenu(menuList);
 		},

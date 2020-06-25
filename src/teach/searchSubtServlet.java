@@ -1,4 +1,6 @@
-package grade;
+package teach;
+
+import teach.teachService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,15 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/searchStuGradeServlet")
-public class searchStuGradeServlet extends HttpServlet {
+@WebServlet("/searchSubtServlet")
+public class searchSubtServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        int id=Integer.parseInt(request.getParameter("id"));
-        gradeService service=new gradeService();
-        ArrayList<StudentGrade> ar=service.searchStuGrade(id);
+        int sub=Integer.parseInt(request.getParameter("sub"));
+        teachService service=new teachService();
+        ArrayList<teachInfo> ar=service.searchSub(sub);
+        request.getSession().setAttribute("flag",5);
         if(ar!=null){
-            request.getSession().setAttribute("stuGrades",ar);
+            request.getSession().setAttribute("teachList",ar);
             response.getWriter().print(true);
         }
         else{
