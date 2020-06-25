@@ -24,9 +24,13 @@ public class MenuInitServlet extends HttpServlet {
                 "\t\t{\"name\":\"专业信息管理\",\"link\":\"waiting.html\"},\n" +
                 "\t\t{\"name\":\"院系信息管理\",\"link\":\"waiting.html\"},\n" +
                 "\t\t{\"name\":\"学生信息管理\",\"link\":\"../StudentListAction\"}]},\n" +
+
                         "{\"main\":\"教师管理\",\"sub\":[{\"name\":\"教师信息管理\",\"link\":\"../teacher/teacher_list.jsp\"}]},\n" +
+
                         "{\"main\":\"教室管理\",\"sub\":[{\"name\":\"教室信息管理\",\"link\":\"../room/room_list.jsp\"}]},"+
+
                 "\t{\"main\":\"课程管理\",\"sub\":[{\"name\":\"课程信息管理\",\"link\":\"../CourseListAction\"}]},\n" +
+
                 "\t{\"main\":\"成绩管理\",\"sub\":[\n" +
                 "\t\t{\"name\":\"学生成绩查询\",\"link\":\"../grade/searchStuGrade.jsp\"},\n" +
                 "\t\t{\"name\":\"课程成绩查询\",\"link\":\"../grade/searchSubGrade.jsp\"},\n" +
@@ -42,7 +46,7 @@ public class MenuInitServlet extends HttpServlet {
         String S_menuList = "{\"main\":\"用户信息管理\",\"sub\":[\n" +
                 "\t\t{\"name\":\"个人信息管理\",\"link\":\"../user/userInfo_edit.jsp?status=1\"},\n" +
                 "\t\t{\"name\":\"用户信息管理\",\"link\":\"../user/user_list.jsp\"},\n" +
-                "\t\t{\"name\":\"管理员设置\",\"link\":\"waiting.html\"}]},";
+                "\t\t{\"name\":\"管理员设置\",\"link\":\"../user/user_auth.jsp\"}]},";
 
         if(type == 2){
             menuList = "[ \n" + P_menuList + menuList;

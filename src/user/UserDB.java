@@ -1,7 +1,6 @@
 package user;
 
 import commom.*;
-import course.CourseInfo;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 public class UserDB implements Serializable {
 	private Connection con = null;
 	public UserInfo GetUserbyName(String userName) {
-		//System.out.println("GetUserbyName:userName="+userName);
 		UserInfo user=null;
 		PreparedStatement pStmt=null;
 		ResultSet rs = null;
@@ -34,7 +32,7 @@ public class UserDB implements Serializable {
 			rs.close();
 			pStmt.close();
 		}catch(Exception e) {
-			System.out.println("获取指定用户信息失败！ Error to fetching the infomation of user!");
+			System.out.println("获取指定用户信息失败！");
 			e.printStackTrace();
 
 		}finally {
@@ -65,7 +63,7 @@ public class UserDB implements Serializable {
 			rs.close();
 			pStmt.close();
 		}catch(Exception e) {
-			System.out.println("获取指定用户信息失败！ Error to fetching the infomation of user!");
+			System.out.println("获取指定用户信息失败！");
 			e.printStackTrace();
 
 		}finally {
@@ -79,7 +77,6 @@ public class UserDB implements Serializable {
 		try {
 			con=DBConnection.getConnection();
 			pStmt = con.prepareStatement("UPDATE t_user SET VC_LOGIN_NAME=?,VC_PASSWORD=? WHERE N_USER_ID=?");
-			//TODO 预编译SQL语句参数的设置
 			pStmt.setString(1,user.getUserName());
 			pStmt.setString(2,user.getUserPwd());
 			pStmt.setInt(3,user.getUserID());
@@ -87,7 +84,30 @@ public class UserDB implements Serializable {
 			count=pStmt.executeUpdate();
 			pStmt.close();
 		} catch (Exception e) {
-			System.out.println("修改课程失败！");
+			System.out.println("修改用户信息失败！");
+			e.printStackTrace();
+		} finally{
+			DBConnection.closeConnection();
+		}
+		return count;
+	}
+
+	public int editAuth(UserInfo user){
+		PreparedStatement pStmt=null;
+		int count=0;
+		try {
+			con=DBConnection.getConnection();
+			pStmt = con.prepareStatement("UPDATE t_user SET Authority=? WHERE N_USER_ID=?");
+			if(user.getAuth() == 1){
+				pStmt.setInt(1,2);
+			}else {
+				pStmt.setInt(1,1);
+			}
+			pStmt.setInt(2,user.getUserID());
+			count=pStmt.executeUpdate();
+			pStmt.close();
+		} catch (Exception e) {
+			System.out.println("修改权限失败！");
 			e.printStackTrace();
 		} finally{
 			DBConnection.closeConnection();
