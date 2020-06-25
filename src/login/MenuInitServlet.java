@@ -37,11 +37,11 @@ public class MenuInitServlet extends HttpServlet {
 
         String A_menuList = "{\"main\":\"用户信息管理\",\"sub\":[\n" +
                 "\t\t{\"name\":\"个人信息管理\",\"link\":\"../user/userInfo_edit.jsp?status=1\"},\n" +
-                "\t\t{\"name\":\"普通用户信息管理\",\"link\":\"../user/user_list.jsp?type=1\"}]},";
+                "\t\t{\"name\":\"普通用户信息管理\",\"link\":\"../user/user_list.jsp\"}]},";
 
         String S_menuList = "{\"main\":\"用户信息管理\",\"sub\":[\n" +
                 "\t\t{\"name\":\"个人信息管理\",\"link\":\"../user/userInfo_edit.jsp?status=1\"},\n" +
-                "\t\t{\"name\":\"用户信息管理\",\"link\":\"../user/user_list.jsp?type=0\"},\n" +
+                "\t\t{\"name\":\"用户信息管理\",\"link\":\"../user/user_list.jsp\"},\n" +
                 "\t\t{\"name\":\"管理员设置\",\"link\":\"waiting.html\"}]},";
 
         if(type == 2){

@@ -1,28 +1,25 @@
 package user;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
-@WebServlet("/UserListServlet")
-public class UserListServlet extends HttpServlet {
+@WebServlet("/UserDeleteServlet")
+public class UserDeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        UserInfo user = (UserInfo) request.getSession().getAttribute("user");
-        int type = user.getAuth();
+        int id = Integer.parseInt(request.getParameter("id"));
         UserDB userBean = new UserDB();
-        ArrayList<UserInfo> list = new ArrayList<>();
-        list = userBean.GetUserInfo(type);
-        ObjectMapper obj = new ObjectMapper();
-        String str = obj.writeValueAsString(list);
-        response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(str);
+        try{
+            userBean.delete(id);
+        }catch (Exception e){
+            System.out.println("删除失败");
+            e.printStackTrace();
+        }
+        response.sendRedirect(request.getContextPath()+"/user/user_list.jsp");
 
     }
 

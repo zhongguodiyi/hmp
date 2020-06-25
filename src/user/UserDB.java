@@ -1,6 +1,7 @@
 package user;
 
 import commom.*;
+import course.CourseInfo;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -87,6 +88,47 @@ public class UserDB implements Serializable {
 			pStmt.close();
 		} catch (Exception e) {
 			System.out.println("修改课程失败！");
+			e.printStackTrace();
+		} finally{
+			DBConnection.closeConnection();
+		}
+		return count;
+	}
+
+	public int delete(int id){
+		PreparedStatement pStmt = null;
+		int count=0;
+		try{
+			con = DBConnection.getConnection();
+			pStmt = con.prepareStatement("DELETE from t_user WHERE N_USER_ID = ?");
+			pStmt.setInt(1, id);
+			pStmt.executeUpdate();
+
+			pStmt.close();
+		}catch(Exception e){
+			System.out.println("删除失败");
+			e.printStackTrace();
+		}finally {
+			DBConnection.closeConnection();
+		}
+		return count;
+	}
+
+	public int insert(UserInfo user) {
+		PreparedStatement pStmt=null;
+		int count=0;
+		try {
+			con=DBConnection.getConnection();
+			pStmt = con.prepareStatement("INSERT INTO t_user(VC_LOGIN_NAME,VC_PASSWORD,Authority) VALUES(?,?,?)");
+			//TODO 预编译SQL语句参数的设置
+			pStmt.setString(1,user.getUserName());
+			pStmt.setString(2,user.getUserPwd());
+			pStmt.setInt(3,user.getAuth());
+
+			count=pStmt.executeUpdate();
+			pStmt.close();
+		} catch (Exception e) {
+			System.out.println("添加用户失败！");
 			e.printStackTrace();
 		} finally{
 			DBConnection.closeConnection();

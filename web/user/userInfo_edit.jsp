@@ -67,13 +67,13 @@
             </tr>
             <tr>
                 <td>用户名</td>
-                <td><label class="item"><input type="text" name="userName" id="userName" value="<%=user.getUserName()%>"></label><br>
+                <td><label class="item"><input type="text" name="userName" id="userName" value="<%=user.getUserName()%>" size="12" maxlength="6" placeholder="3-6位字符" required pattern="\S{3,6}"></label><br>
                     <div id="UMsg"></div>
                 </td>
             </tr>
             <tr>
                 <td>密 码</td>
-                <td><label class="item"><input type="password" name="pwd" id="pwd" value="<%=user.getUserPwd()%>"></label><br>
+                <td><label class="item"><input type="password" name="pwd" id="pwd" value="<%=user.getUserPwd()%>" size="12" maxlength="12" placeholder="6-12位字符" required pattern="\S{6,12}"></label><br>
                     <div id="PMsg"></div>
                 </td>
             </tr>

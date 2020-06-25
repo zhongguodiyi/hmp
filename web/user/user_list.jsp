@@ -22,8 +22,8 @@
         <td></td>
     </tr>
     <tr style="background-color: white;">
-        <td colspan="3" style="text-align: left;"><a href="#">添加</a></td>
-        <td colspan="3" style="text-align: center;"><a href="user_list.jsp?type=<%=request.getParameter("type")%>">刷新数据列表</a></td>
+        <td colspan="3" style="text-align: left;"><a href="user_add.jsp">添加</a></td>
+        <td colspan="3" style="text-align: center;"><a href="user_list.jsp">刷新数据列表</a></td>
     </tr>
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script>
@@ -33,7 +33,6 @@
             $.ajax({
                 type : "POST",
                 url:"<%=request.getContextPath()%>/UserListServlet",
-                data:"type="+"<%=request.getParameter("type")%>",
                 success:function (data) {
                     for (let i = 0; i < data.length; i++){
                         let tdi = i%2===0?"1":"2";
@@ -44,8 +43,8 @@
                             "<td>"+ data[i].userName +"</td>" +
                             "<td>"+ data[i].userPwd +"</td>" +
                             "<td>"+ type +"</td>" +
-                            "<td><a href="+"<%=request.getContextPath()%>"+"\"/user/userInfo_edit.jsp?id="+ data[i].userID+"&status=2\">编辑</a></td>" +
-                            "<td><a href=\"#\""+">删除</a></td></tr>")
+                            "<td><a href="+"\"<%=request.getContextPath()%>"+"/user/userInfo_edit.jsp?id="+ data[i].userID+"&status=2\">编辑</a></td>" +
+                            "<td><a href="+"\"<%=request.getContextPath()%>"+"/UserDeleteServlet?id="+data[i].userID+"\">删除</a></td></tr>")
                     }
                 },
                 error:function () {
